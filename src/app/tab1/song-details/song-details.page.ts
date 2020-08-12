@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Song, SongService } from '../services/song.service';
+import { Song, SongService } from 'src/app/services/song.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
 
@@ -16,7 +16,7 @@ export class SongDetailsPage implements OnInit {
     album: '',
     composer: '',
     lyrics: '',
-    priority: 2
+    priority: 0
   }
 
   songId = null;
@@ -29,6 +29,7 @@ export class SongDetailsPage implements OnInit {
     if (this.songId) {
       this.loadSong();
     }
+    console.log("PORA LOG (Song ID):"+this.songId);
   }
 
   async loadSong() {
@@ -40,7 +41,9 @@ export class SongDetailsPage implements OnInit {
     this.songService.getSong(this.songId).subscribe(res => {
       loading.dismiss();
       this.song = res;
+      console.log("PORA LOG(LOAD SONG): " + this.song);
     });
+
   }
 
   async saveSong() {

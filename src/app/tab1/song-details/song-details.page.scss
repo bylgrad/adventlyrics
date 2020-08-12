@@ -1,0 +1,39 @@
+.lyric-detail img {
+    max-width: 140px;
+    border-radius: 50%;
+  }
+  
+  .lyric-detail pre {
+    // color: #202020;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      white-space: -moz-pre-wrap;
+      white-space: -pre-wrap;
+      white-space: -o-pre-wrap;
+      word-wrap: break-word;
+  }
+
+  .lyric-detail p {
+    white-space: pre-line;
+  }
+  
+  .lyric-detail h4 {
+    font-weight: bold;
+  }
+  
+  .lyric-detail h5 {
+    // color: #222222;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    // text-overflow: scroll;
+  }
+  
+  ion-title {
+    font-size: medium;
+  }
+  
+  ion-toolbar, ion-header {
+    --min-height: 48px;
+   }

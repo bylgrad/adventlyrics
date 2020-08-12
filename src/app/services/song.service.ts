@@ -23,7 +23,6 @@ export class SongService {
 
   constructor(db: AngularFirestore) { 
     this.songsCollection = db.collection<Song>('songs');
-
     this.songs = this.songsCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {

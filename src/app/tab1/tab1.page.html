@@ -17,7 +17,7 @@
 
     <ng-container *ngIf="!songs || songs.length == 0">
       <div *ngFor="let n of [0,1,2]" padding>
-        <ion-skeleton-text></ion-skeleton-text>
+        <ion-skeleton-text class="skeleton"></ion-skeleton-text>
         <p>
           <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
         </p>
@@ -26,29 +26,26 @@
 
 
     <ion-item-sliding *ngFor="let item of songs">
-      <ion-item lines="inset" button [routerLink]="['song-details, item.id']">
+      <ion-item lines="inset" button [routerLink]="['/tabs/tab1/song-details', item.id]">
         <ion-label>
           {{ item.title }}
-          <p>{{ item.artist }}</p>
+          <p>{{ item.artist }}   {{ item.album }}</p>
         </ion-label>
         <ion-note slot="end" color="primary">{{ item.priority }}</ion-note>
       </ion-item>
 
     <ion-item-options side="end">
-      <ion-item-option (click)="remove(item)" color="secondary">
-        Check
-        <ion-icon name="checkmark" slot="end"></ion-icon>
+      <ion-item-option (click)="remove(item)" color="danger">
+        DELETE<ion-icon name="trash" slot="end"></ion-icon>
       </ion-item-option>
 
     </ion-item-options>
     </ion-item-sliding>
   </ion-list>
 
-  <ion-fab vertica="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/song-details" routerDirection="forward">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/tabs/tab1/song-form" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>

@@ -14,7 +14,7 @@ export class Tab1Page implements OnInit {
   ngOnInit() {
     this.songService.getSongs().subscribe(res => {
       this.songs = res;
-    })
+    });
   }
 
   remove(item) {

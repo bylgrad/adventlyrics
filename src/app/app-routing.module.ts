@@ -6,14 +6,15 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
-  // {
-  //   path: 'song-details',
-  //   loadChildren: () => import('./song-details/song-details.module').then( m => m.SongDetailsPageModule)
-  // },
-  // {
-  //   path: 'song-details/:id',
-  //   loadChildren: () => import('./song-details/song-details.module').then( m => m.SongDetailsPageModule)
-  // }
+  {
+    path: 'tabs/tab1/song-details',
+    loadChildren: () => import('src/app/tab1/song-details/song-details.module').then( m => m.SongDetailsPageModule)
+  },
+  {
+    path: 'tabs/tab1/song-details/:id',
+    loadChildren: () => import('src/app/tab1/song-details/song-details.module').then( m => m.SongDetailsPageModule)
+  }
+  
 ];
 @NgModule({
   imports: [
