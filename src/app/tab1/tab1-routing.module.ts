@@ -6,14 +6,6 @@ const routes: Routes = [
   {
     path: '',
     component: Tab1Page
-  },
-  {
-    path: 'song-form',
-    loadChildren: () => import('./song-form/song-form.module').then( m => m.SongFormPageModule)
-  },
-  {
-    path: 'song-form/:id',
-    loadChildren: () => import('./song-form/song-form.module').then( m => m.SongFormPageModule)
   }
 ];
 

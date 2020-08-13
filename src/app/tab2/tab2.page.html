@@ -23,7 +23,7 @@
     </ng-container>
 
     <ion-item-sliding *ngFor="let item of filipinos">
-      <ion-item lines="inset" button [routerLink]="['kanta-detalye', item.id]">
+      <ion-item lines="inset" button [routerLink]="['/tabs/tab2/kanta-detalye', item.id]">
         <ion-label>
           <b>{{ item.title }}</b>
           <p>{{ item.artist }} {{ item.album }}</p>
