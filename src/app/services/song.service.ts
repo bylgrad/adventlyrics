@@ -17,8 +17,10 @@ export interface Song {
 export class SongService {
 
   private songsCollection: AngularFirestoreCollection<Song>;
+  private kantaCollection: AngularFirestoreCollection<Song>;
 
   private songs: Observable<Song[]>;
+  private liriko: Observable<Song[]>;
 
   constructor(db: AngularFirestore) { 
     this.songsCollection = db.collection<Song>('songs');
@@ -31,14 +33,31 @@ export class SongService {
         });
       })
     );
+
+    this.kantaCollection = db.collection<Song>('liriko');
+    this.liriko = this.kantaCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        })
+      })
+    )
   }
 
   getSongs() {
     return this.songs;
   }
+  getFilipinos() {
+    return this.liriko;
+  }
 
   getSong(id) {
     return this.songsCollection.doc<Song>(id).valueChanges();
+  }
+  getFilipino(id) {
+    return this.kantaCollection.doc<Song>(id).valueChanges();
   }
 
   updateSong(song: Song, id: string) {
@@ -47,6 +66,9 @@ export class SongService {
 
   addSong(song: Song) {
     return this.songsCollection.add(song);
+  }
+  addFilipino(kanta: Song) {
+    return this.kantaCollection.add(kanta);
   }
 
   removeSong(id) {

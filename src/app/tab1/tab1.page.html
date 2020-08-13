@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Advent Lyrics 
+      Song List
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,7 +14,6 @@
   </ion-header>
 
   <ion-list>
-
     <ng-container *ngIf="!songs || songs.length == 0">
       <div *ngFor="let n of [0,1,2]" padding>
         <ion-skeleton-text class="skeleton"></ion-skeleton-text>
@@ -24,22 +23,21 @@
       </div>
     </ng-container>
 
-
     <ion-item-sliding *ngFor="let item of songs">
       <ion-item lines="inset" button [routerLink]="['/tabs/tab1/song-details', item.id]">
         <ion-label>
-          {{ item.title }}
-          <p>{{ item.artist }}   {{ item.album }}</p>
+          <b>{{ item.title }}</b>
+          <p>{{ item.artist }} {{ item.album }}</p>
         </ion-label>
         <ion-note slot="end" color="primary">{{ item.priority }}</ion-note>
       </ion-item>
 
-    <ion-item-options side="end">
+    <!-- <ion-item-options side="end">
       <ion-item-option (click)="remove(item)" color="danger">
         DELETE<ion-icon name="trash" slot="end"></ion-icon>
       </ion-item-option>
 
-    </ion-item-options>
+    </ion-item-options> -->
     </ion-item-sliding>
   </ion-list>
 

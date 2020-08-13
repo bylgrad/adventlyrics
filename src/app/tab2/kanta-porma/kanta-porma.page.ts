@@ -4,11 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-song-details',
-  templateUrl: './song-details.page.html',
-  styleUrls: ['./song-details.page.scss'],
+  selector: 'app-kanta-porma',
+  templateUrl: './kanta-porma.page.html',
+  styleUrls: ['./kanta-porma.page.scss'],
 })
-export class SongDetailsPage implements OnInit {
+export class KantaPormaPage implements OnInit {
+
 
   song: Song = {
     title: '',
@@ -17,32 +18,12 @@ export class SongDetailsPage implements OnInit {
     composer: '',
     lyrics: ''
   }
-
   songId = null;
 
   constructor(private songService: SongService, private route: ActivatedRoute,
     private loadingController: LoadingController, private nav: NavController) { }
 
   ngOnInit() {
-    this.songId = this.route.snapshot.params['id'];
-    if (this.songId) {
-      this.loadSong();
-    }
-    console.log("PORA LOG (Song ID):"+this.songId);
-  }
-
-  async loadSong() {
-    const loading = await this.loadingController.create({
-      message: 'Loading Song..'
-    });
-    await loading.present();
-
-    this.songService.getSong(this.songId).subscribe(res => {
-      loading.dismiss();
-      this.song = res;
-      console.log("PORA LOG(LOAD SONG): " + this.song);
-    });
-
   }
 
   async saveSong() {
@@ -54,17 +35,15 @@ export class SongDetailsPage implements OnInit {
     if (this.songId) {
       this.songService.updateSong(this.song, this.songId).then(() => {
         loading.dismiss();
-        this.nav.navigateBack('');
+        this.nav.navigateBack('/tabs/tab2');
       });
 
     } else {
-      this.songService.addSong(this.song).then(() => {
+      this.songService.addFilipino(this.song).then(() => {
         loading.dismiss();
-        this.nav.navigateBack('');
+        this.nav.navigateBack('/tabs/tab2');
       });
   }
 }
 
 }
-
-// tutorial: https://www.youtube.com/watch?v=H20l9ofyR54
