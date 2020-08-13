@@ -13,7 +13,7 @@ export class Tab1Page implements OnInit {
 
   ngOnInit() {
     this.songService.getSongs().subscribe(res => {
-      this.songs = res;
+      this.songs = res.sort((a, b) => (a.title > b.title) ? 1 : -1);
     });
   }
 

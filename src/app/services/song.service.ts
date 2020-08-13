@@ -10,7 +10,6 @@ export interface Song {
   album: string;
   composer: string;
   lyrics: string;
-  priority: number;
 }
 @Injectable({
   providedIn: 'root'

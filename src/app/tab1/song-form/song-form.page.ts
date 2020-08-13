@@ -16,8 +16,7 @@ export class SongFormPage implements OnInit {
     artist: '',
     album: '',
     composer: '',
-    lyrics: '',
-    priority: 2
+    lyrics: ''
   }
 
   songId = null;
@@ -55,7 +54,7 @@ export class SongFormPage implements OnInit {
     if (this.songId) {
       this.songService.updateSong(this.song, this.songId).then(() => {
         loading.dismiss();
-        this.nav.navigateBack('/home');
+        this.nav.navigateBack('');
       });
 
     } else {

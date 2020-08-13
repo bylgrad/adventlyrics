@@ -12,8 +12,8 @@
   <div *ngIf="song" class="ion-text-center">
     <!-- <img [src]="lyric.profilePic" [alt]="lyric.name"> -->
     <h4>{{ song?.title }}</h4>
-    <h5><i>Artist: {{ song?.artist }}</i></h5>
-    <h5><i>Composer: {{ song?.composer }}</i></h5>
+    <h5><i>{{ song?.artist }}</i></h5>
+    <h5><i>{{ song?.composer }}</i></h5>
     <br>
 
     <ion-button fill="clear" size="small" color="twitter">
@@ -27,8 +27,9 @@
     </ion-button>
   </div>
 
-  <div class="ion-text-wrap large">
-      <p>{{ song?.lyrics }}</p>
+  <div class="ion-text-wrap large ion-text-center">
+      <!-- {{ song?.lyrics }} -->
+      <div [innerHTML]="song.lyrics"></div>
   </div>  
 
 
