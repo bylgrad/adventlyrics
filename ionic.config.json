@@ -1,5 +1,7 @@
 {
   "name": "AdventLyrics",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
