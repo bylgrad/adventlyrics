@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="light">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -8,15 +8,17 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="song" class="ion-text-center">
-    <h4><b>{{ song?.title }}</b></h4>
-    <small><i>{{ song?.album }}</i><br><i>{{ song?.composer }}</i></small>
+  <div class="ion-text-center" style="padding: 5px;">
+    <div *ngIf="song">
+      <h4><b>{{ song?.title }}</b></h4>
+      <small><i [innerHTML]="subtitle"></i></small>
+    </div>
+    <ion-item-divider></ion-item-divider>
+    <div class="ion-text-wrap large ion-text-center">
+        <p [innerHTML]="song?.lyrics"></p>
+    </div>  
   </div>
-
-  <div class="ion-text-wrap large ion-text-center">
-      <p [innerHTML]="song?.lyrics"></p>
-  </div>  
-
+  
   <div class="ion-text-center" padding>
     <ion-button fill="clear" size="small" color="twitter">
       <ion-icon name="logo-twitter" slot="icon-only"></ion-icon>
@@ -29,3 +31,10 @@
     </ion-button>
   </div>
 </ion-content>
+
+
+  <!-- <ion-footer>
+    <ion-toolbar color="success">
+      <ion-title>Footer</ion-title>
+    </ion-toolbar>
+  </ion-footer> -->

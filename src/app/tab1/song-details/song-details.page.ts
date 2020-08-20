@@ -17,6 +17,7 @@ export class SongDetailsPage implements OnInit {
     composer: '',
     lyrics: ''
   }
+  subtitle: string;
 
   songId = null;
 
@@ -28,7 +29,6 @@ export class SongDetailsPage implements OnInit {
     if (this.songId) {
       this.loadSong();
     }
-    console.log("PORA LOG (Song ID):"+this.songId);
   }
 
   async loadSong() {
@@ -40,7 +40,7 @@ export class SongDetailsPage implements OnInit {
     this.songService.getSong(this.songId).subscribe(res => {
       loading.dismiss();
       this.song = res;
-      console.log("PORA LOG(LOAD SONG): " + this.song);
+      this.subtitle = this.song.artist + '\n' + this.song.album + "<br>" + this.song.composer;
     });
 
   }

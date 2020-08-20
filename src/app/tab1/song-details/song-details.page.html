@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="light">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -8,28 +8,17 @@
 </ion-header>
 
 <ion-content padding class="lyric-detail">
-
-  <div *ngIf="song" class="ion-text-center">
-    <!-- <img [src]="lyric.profilePic" [alt]="lyric.name"> -->
-    <h4><b>{{ song?.title }}</b></h4>
-    <small><i>{{ song?.album }}</i><br><i>{{ song?.composer }}</i></small>
-    <!-- <ion-button fill="clear" size="small" color="twitter">
-      <ion-icon name="logo-twitter" slot="icon-only"></ion-icon>
-    </ion-button>
-    <ion-button fill="clear" size="small" color="facebook">
-      <ion-icon name="logo-facebook" slot="icon-only"></ion-icon>
-    </ion-button>
-    <ion-button fill="clear" size="small" color="instagram">
-      <ion-icon name="logo-instagram" slot="icon-only"></ion-icon>
-    </ion-button>
-    <br>
-    <br> -->
+  <div class="ion-text-center" style="padding: 10px;">
+      <!-- <img [src]="lyric.profilePic" [alt]="lyric.name"> -->
+      <h4><b>{{ song?.title }}</b></h4>
+      <!-- <small><i>{{ song?.artist}} </i><i>{{ song?.album }} </i><i>{{ song?.composer }}</i></small> -->
+      <small><i [innerHTML]="subtitle"></i></small>
+        <ion-item-divider></ion-item-divider>
+    <div class="ion-text-wrap large ion-text-center">
+        <!-- {{ song?.lyrics }} -->
+        <p [innerHTML]="song?.lyrics"></p>
+    </div>  
   </div>
-
-  <div class="ion-text-wrap large ion-text-center">
-      <!-- {{ song?.lyrics }} -->
-      <p [innerHTML]="song?.lyrics"></p>
-  </div>  
 
   <div class="ion-text-center" padding>
     <ion-button fill="clear" size="small" color="twitter">

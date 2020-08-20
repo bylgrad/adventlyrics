@@ -1,30 +1,39 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="light">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref=""></ion-back-button>
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
     </ion-buttons>
     <ion-title>Song Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list lines="full">
+<ion-content padding style="padding: 20px;">
+  <ion-list>
     <ion-item>
-      <ion-input required type="text" placeholder="Title" [(ngModel)]="song.title"></ion-input>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input required type="text" [(ngModel)]="song.title"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="Artist" [(ngModel)]="song.artist"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="Album" [(ngModel)]="song.album"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="text" placeholder="Composer" [(ngModel)]="song.composer"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input required type="text" placeholder="Lyrics" [(ngModel)]="song.lyrics"></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button (click)="saveSong()">Save &nbsp;&nbsp;<ion-icon name="save"></ion-icon></ion-button>
 
+    <ion-item>
+      <ion-label position="floating">Artist</ion-label>
+      <ion-input type="text" [(ngModel)]="song.artist"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Album</ion-label>
+      <ion-input type="text" [(ngModel)]="song.album"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Composer</ion-label>
+      <ion-input type="text" [(ngModel)]="song.composer"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Lyrics</ion-label>
+      <ion-textarea required rows="10" cols="2" [(ngModel)]="song.lyrics"></ion-textarea>
+    </ion-item>
+
+  </ion-list>
+  <ion-button expand="block" (click)="saveSong()" color="dark">Save &nbsp;&nbsp;<ion-icon name="save"></ion-icon></ion-button>
 </ion-content>

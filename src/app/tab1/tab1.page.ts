@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Song, SongService } from '../services/song.service';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -9,7 +10,9 @@ import { Song, SongService } from '../services/song.service';
 export class Tab1Page implements OnInit {
   songs: Song[];
 
-  constructor(private songService: SongService) {}
+  constructor(private songService: SongService, private platform: Platform) {}
+  
+  backButtonSubscription;
 
   ngOnInit() {
     this.songService.getSongs().subscribe(res => {
@@ -20,4 +23,17 @@ export class Tab1Page implements OnInit {
   remove(item) {
     this.songService.removeSong(item.id);
   }
+
+//   ionViewWillEnter() {
+//     this.backButtonSubscription = this.platform.backButton.subscribe(async () => {
+//     navigator['app'].exitApp();
+//     });
+// // //     this.platform.backButton.subscribeWithPriority(1, () => {
+// // //       navigator['app'].exitApp();
+// // //        });
+//    }
+   
+//    ionViewDidLeave() {
+//     this.backButtonSubscription.unsubscribe();
+//    }
 }

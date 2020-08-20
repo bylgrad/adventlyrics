@@ -18,6 +18,8 @@ export class KantaDetalyePage implements OnInit {
     lyrics: ''
   }
 
+  subtitle: string;
+
   songId = null;
 
   constructor(private songService: SongService, private route: ActivatedRoute,
@@ -28,7 +30,6 @@ export class KantaDetalyePage implements OnInit {
     if (this.songId) {
       this.loadFilipino();
     }
-    console.log("PORA LOG (Song ID):"+this.songId);
   }
 
   async loadFilipino() {
@@ -40,7 +41,7 @@ export class KantaDetalyePage implements OnInit {
     this.songService.getFilipino(this.songId).subscribe(res => {
       loading.dismiss();
       this.song = res;
-      console.log("PORA LOG(LOAD SONG): " + this.song);
+      this.subtitle = this.song.artist + '\n' + this.song.album + "<br>" + this.song.composer;
     });
 
   }
