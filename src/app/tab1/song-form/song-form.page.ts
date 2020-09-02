@@ -81,10 +81,19 @@ export class SongFormPage implements OnInit {
       else {
         await loading.present();
         this.song.lyrics = this.song.lyrics.replace(/(?:\r\n|\r|\n)/g, '<br>'); // replace newline/line break/enter with <br>
-        this.songService.addSong(this.song).then(() => {
+        
+        // BEGIN Uncomment this
+        // this.songService.addSong(this.song).then(() => {
+        //   loading.dismiss();
+        //   this.nav.navigateBack('/tabs/tab1');
+        // });
+        // END uncomment this
+
+        // BEGIN experimental Offline saving
+        this.songService.addSong(this.song);
         loading.dismiss();
         this.nav.navigateBack('/tabs/tab1');
-      });
+      // END experimental Offline saving
     }
   }
 }

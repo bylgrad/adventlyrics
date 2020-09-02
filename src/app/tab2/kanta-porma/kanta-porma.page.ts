@@ -65,10 +65,20 @@ export class KantaPormaPage implements OnInit {
       else {
         await loading.present(); 
         this.song.lyrics = this.song.lyrics.replace(/(?:\r\n|\r|\n)/g, '<br>'); // replace newline/line break/enter with <br>
-        this.songService.addFilipino(this.song).then(() => {
-        loading.dismiss();
-        this.nav.navigateBack('/tabs/tab2');
-      });
+      
+      // Uncomment this
+      //   this.songService.addFilipino(this.song).then(() => {
+      //   loading.dismiss();
+      //   this.nav.navigateBack('/tabs/tab2');
+      // });
+      // Uncomment this
+
+      // BEGIN experimental Offline saving
+      this.songId = "testid";
+      this.songService.addFilipino(this.song);
+      loading.dismiss();
+      this.nav.navigateBack('/tabs/tab2');
+      // END experimental Offline saving
     }
   }
 }

@@ -1,6 +1,6 @@
 {
-  "name": "AdventLyrics",
-  "version": "0.0.1",
+  "name": "com.chews.adventlyrics",
+  "version": "0.0.3",
   "author": "bylgrad",
   "homepage": "https://bylgrad.wordpress.com/",
   "scripts": {

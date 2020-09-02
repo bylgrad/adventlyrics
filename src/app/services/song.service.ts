@@ -64,11 +64,37 @@ export class SongService {
     return this.songsCollection.doc(id).update(song);
   }
 
-  addSong(song: Song) {
-    return this.songsCollection.add(song);
+  // addSong(song: Song) {
+  //   return this.songsCollection.add(song);
+  // }
+
+  addSong(song: Song) {  
+    let date : Date = new Date();
+    let objid =date.getFullYear().toString()
+    + date.getMonth().toString()
+    + date.getDay().toString()
+    + date.getHours().toString()
+    + date.getMinutes().toString()
+    + date.getSeconds().toString()
+    + date.getMilliseconds()+'$'+song.title.replace(/[^A-Z]/g, '');
+    return this.songsCollection.doc(objid).set(song);
   }
+  // addFilipino(kanta: Song) {
+  //   return this.kantaCollection.add(kanta);
+  // }
+
+  
   addFilipino(kanta: Song) {
-    return this.kantaCollection.add(kanta);
+    var date = new Date();
+    var objid = date.getFullYear().toString()
+    + date.getMonth().toString()
+    + date.getDay().toString()
+    + date.getHours().toString()
+    + date.getMinutes().toString()
+    + date.getSeconds().toString()
+    + date.getMilliseconds()+'#'+ kanta.title.replace(/[^A-Z]/g, '');
+                
+    return this.kantaCollection.doc(objid).set(kanta);
   }
 
   removeSong(id) {
