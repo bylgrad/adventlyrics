@@ -1,8 +1,8 @@
 {
   "name": "com.chews.adventlyrics",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "author": "bylgrad",
-  "homepage": "https://bylgrad.wordpress.com/",
+  "homepage": "https://rapoography.wordpress.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
