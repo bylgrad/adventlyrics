@@ -10,7 +10,9 @@ import { Platform } from '@ionic/angular';
 export class Tab1Page implements OnInit {
   songs: Song[];
 
-  constructor(private songService: SongService, private platform: Platform) {}
+  constructor(private songService: SongService, private platform: Platform) {
+    
+  }
   
   backButtonSubscription;
 
@@ -20,8 +22,33 @@ export class Tab1Page implements OnInit {
     });
   }
 
+  // ngOnChanges() {
+  //   this.typeSearch(s);
+  // }
+
   remove(item) {
     this.songService.removeSong(item.id);
+  }
+
+  public searchTerm: string = "";
+  typeSearch(ev) { 
+    let keyword = ev.target.value;
+    let i:any;
+    // this.songService.getSongs().subscribe(res => {
+    //   res.some((a, index) => {
+    //     if(a.title.toUpperCase() === keyword.toUpperCase()) {
+    //       console.log(a.title);
+    //       i = index;
+    //     }
+    //   });
+    //   console.log(iterations +" : "+ i);
+    // })
+    this.songs.filter((a, index) => {
+          if(a.title.toUpperCase().match(keyword.toUpperCase())) {
+            i = index;
+            console.log("Title: " + a.title + " Index: " + i);
+          }
+        });
   }
 
 //   ionViewWillEnter() {
