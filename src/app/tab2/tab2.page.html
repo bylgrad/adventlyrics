@@ -3,6 +3,7 @@
     <ion-title>
       Lista ng Kanta
     </ion-title>
+    <ion-searchbar placeholder="Search title, lyrics, singer, etc." showCancelButton="focus" [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -22,7 +23,7 @@
       </div>
     </ng-container>
 
-    <ion-item-sliding *ngFor="let item of filipinos">
+    <ion-item-sliding *ngFor="let item of filipinos | filter:filterTerm">
       <ion-item lines="inset" button [routerLink]="['/tabs/tab2/kanta-detalye', item.id]">
         <ion-label>
           <b>{{ item.title }}</b>

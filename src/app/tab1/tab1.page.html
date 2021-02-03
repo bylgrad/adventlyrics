@@ -3,7 +3,7 @@
     <ion-title>
       Song List
     </ion-title>
-    <ion-searchbar showCancelButton="focus" (keyup)="typeSearch($event)"></ion-searchbar>
+    <ion-searchbar placeholder="Search title, lyrics, singer, etc." showCancelButton="focus" [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
 
   </ion-toolbar>
 </ion-header>
@@ -25,7 +25,7 @@
       </div>
     </ng-container>
 
-    <ion-item-sliding *ngFor="let item of songs">
+    <ion-item-sliding *ngFor="let item of songs | filter:filterTerm">
       <ion-item lines="inset" button [routerLink]="['/tabs/tab1/song-details', item.id]">
         <ion-label>
           <b>{{ item.title }}</b>
